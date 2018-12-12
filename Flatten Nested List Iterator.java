@@ -48,3 +48,49 @@ public class NestedIterator implements Iterator<Integer> {
  * NestedIterator i = new NestedIterator(nestedList);
  * while (i.hasNext()) v[f()] = i.next();
  */
+
+
+/*
+// Definition for a Node.
+class Node {
+    public int val;
+    public Node prev;
+    public Node next;
+    public Node child;
+
+    public Node() {}
+
+    public Node(int _val,Node _prev,Node _next,Node _child) {
+        val = _val;
+        prev = _prev;
+        next = _next;
+        child = _child;
+    }
+};
+*/
+class Solution {
+    public Node flatten(Node head) {
+        if(head == null) return null;
+        Node cursor = head;
+        while(cursor != null){
+            Node tail = cursor.child;
+            Node prev = tail;
+            while(tail != null){
+                prev = tail;
+                tail = tail.next;
+            }
+            
+            if(prev != null){
+                prev.next = cursor.next;
+                if(cursor.next != null) cursor.next.prev = prev;
+                cursor.child.prev = cursor;
+                cursor.next = cursor.child;
+                cursor.child = null;
+            }
+            cursor = cursor.next;
+        }
+        return head;
+    }
+}
+
+
