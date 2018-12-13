@@ -9,8 +9,8 @@ class Solution {
             map.put(word, map.get(word) + 1);
         }
         
+        //USE BUCKETS SORT -- SORT FREQUENCY; USE TREESET TO SORT STRING ALPHABETICALLY.
         TreeSet<String> [] buckets = new TreeSet[words.length + 1];
-        
         for(String word: map.keySet()){
             int fre = map.get(word);
             if(buckets[fre] == null){
@@ -18,6 +18,8 @@ class Solution {
             }
             buckets[fre].add(word);
         }
+        
+        //COMPUTE THE RESULT
         List<String> ret = new ArrayList<>();
         for(int i = buckets.length - 1; i >= 0 && k > 0; i--){
             if(buckets[i] != null){
