@@ -10,8 +10,7 @@ class Solution {
             }
         }
         
-        
-        
+        //BUILD DATA BASE
         for(int i = 0; i < words.length - 1; i++){
             String word1 = words[i];
             String word2 = words[i + 1];
@@ -28,14 +27,13 @@ class Solution {
                         edge_map.put(c1, set);
                         indegree_map.put(c2, indegree_map.get(c2) + 1);
                     }
+                    //Once we find the different characters, and then we can break the inner loop
                     break;
                 }
             }
         }
         
-        
-        
-        
+        //USING TOPOLOGICAL SORT, WE FIND THE LEXICALGRAPHICAL ORDER OF THE DICTIONARY.
         Queue<Character> q = new LinkedList<>();
         for(Character c: indegree_map.keySet()){
             if(indegree_map.get(c) == 0) q.add(c);
