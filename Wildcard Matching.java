@@ -4,7 +4,8 @@
 //            else if p is empty string "", s and p does not matched, dp[i][j] is false.
 // iteration: if(s.charAt(i) == p.charAt(j) || p.charAt(j) == '?') then dp[i][j] is true if s.substring(i - 1) matches p.substring(j - 1)
 //            if(p.charAt(j) == '*') then dp[i][j] is true if dp[i + 1][j] is true (* acts as any sequence of characters) or dp[i][j+1] is true (* acts as empty sequency).
-
+// Space: O(m*n);
+// Time: O(m*n);
 class Solution {
     public boolean isMatch(String s, String p) {
         if(s == null || p == null) return false;
