@@ -41,3 +41,53 @@ public class Solution {
         return ret;
     }
 }
+
+// Space: O(1)
+// Time O(3n)
+/**
+ * Definition for singly-linked list with a random pointer.
+ * class RandomListNode {
+ *     int label;
+ *     RandomListNode next, random;
+ *     RandomListNode(int x) { this.label = x; }
+ * };
+ */
+public class Solution {
+    public RandomListNode copyRandomList(RandomListNode head) {
+        if(head == null) return null;
+        //copy node and manipulate next pointer
+        // make next pointer of original node to point the copy node; make next pointer of copyt node to point original node.next
+        RandomListNode newHead = new RandomListNode(head.label);
+        RandomListNode cursor1 = head;
+        RandomListNode cursor2 = newHead;
+        while(cursor1 != null){
+            cursor2.next = cursor1.next;
+            cursor1.next = cursor2;
+            cursor1 = cursor2.next;
+            if(cursor1 != null){
+                RandomListNode newNode = new RandomListNode(cursor1.label);
+                cursor2 = newNode;
+            }
+        }
+        
+        // make the random pointer to point to the correct copy node
+        cursor1 = head;
+        cursor2 = newHead;
+        while(cursor1 != null){
+            if(cursor1.random != null) cursor2.random = cursor1.random.next; //!!!!check null
+            cursor1 = cursor2.next;
+            if(cursor1 != null )cursor2 = cursor1.next;
+        }
+        
+        //restore original node
+        cursor1 = head;
+        cursor2 = newHead;
+        while(cursor1 != null){
+            cursor1.next = cursor2.next;
+            if(cursor2.next != null) cursor2.next = cursor2.next.next; // !!!check null
+            cursor1 = cursor1.next;
+            cursor2 = cursor2.next;
+        }
+        return newHead;
+    }
+}
