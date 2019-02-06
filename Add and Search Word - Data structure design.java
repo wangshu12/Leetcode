@@ -25,7 +25,42 @@ class WordDictionary {
     /** Returns if the word is in the data structure. A word could contain the dot character '.' to represent any one letter. */
     public boolean search(String word) {
         return dfsSearch(dumpHead, word, 0);
+        //return bfsSearch(word);
     }
+    
+//     private boolean bfsSearch(String word){
+//         int index = 0;
+//         Queue<TrieNode> queue = new LinkedList<>();
+//         queue.add(dumpHead);
+//         while(queue.size() > 0 && index < word.length()){
+//             int size = queue.size();
+//             char c = word.charAt(index);
+//             for(int i = 0; i < size; i++){
+//                 TrieNode cursor = queue.poll();
+//                 //System.out.println("here");
+//                 if(c != '.'){
+//                     if(cursor.nodes[(int)(c - 'a')] != null){
+//                         queue.add(cursor.nodes[(int)(c - 'a')]);
+//                     }
+//                 }else{
+//                     for(int j = 0; j < cursor.nodes.length; j++){
+//                         if(cursor.nodes[j] != null){
+//                             queue.add(cursor.nodes[j]);
+//                         }
+//                     }
+//                 }
+//             }
+//             index++;
+//         }
+        
+//         if(index < word.length()) return false;
+//         while(!queue.isEmpty()){
+//             TrieNode node = queue.poll();
+//             if(node.isWord) return true;
+//         }
+//         //System.out.println("here");
+//         return false;
+//     }
     
     private boolean dfsSearch(TrieNode node, String word, int index){
         if(index == word.length()) return node.isWord;
