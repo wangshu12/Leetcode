@@ -13,13 +13,11 @@ class Solution {
         return dp[amount];
     }
 }
-
 class Solution {
     HashMap<Integer, Integer> map = new HashMap<>();
     public int coinChange(int[] coins, int amount) {
         if(map.containsKey(amount)) return map.get(amount);
-        if(amount == 0) return 0;
-        if(amount < 0) return -1;
+        if(amount == 0) return 0; if(amount < 0) return -1;
         int min = -1;
         for(int i = 0; i < coins.length; i++){
             int numCoins = coinChange(coins, amount - coins[i]);
@@ -32,7 +30,6 @@ class Solution {
         return min;
     }
 }
-
 //greedy
 public int coinChange(int[] coins, int amount){
     Arrays.sort(coins);
