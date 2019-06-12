@@ -11,7 +11,7 @@ class Solution {
         }
         return counter;
     }
-    
+
     private boolean isPrime(int num){
         if(num == 2 || num == 3) return true;
         if(num % 2 == 0 || num % 3 == 0) return false;
