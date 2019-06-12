@@ -32,7 +32,6 @@ public class Codec {
             q.add(node.right);
         }
     }
-
     // Decodes your encoded data to tree.
     public TreeNode deserialize(String data) {
         String[] arr = data.split(",");
