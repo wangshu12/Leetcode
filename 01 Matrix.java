@@ -5,7 +5,7 @@ class Solution {
         }
         Queue<Node> queue = new LinkedList<>();
         boolean[][] visited = new boolean[matrix.length][matrix[0].length];
-        
+
         //Find location whose value is 0.
         for(int i = 0; i < matrix.length; i++){
             for(int j = 0; j < matrix[0].length; j++){
@@ -40,7 +40,7 @@ class Solution {
             visited[x][y] = true;
         }
     }
-    
+ 
     class Node{
         int i;
         int j;
